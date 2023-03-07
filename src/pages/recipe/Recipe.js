@@ -7,6 +7,6 @@ export default function Recipe() {
   const { data, isPending, error } = useFetch(
     `http://localhost:3000/recipes/?id=${param.id}`
   );
-
+  console.log(data);
   return <div>Recipe</div>;
 }
