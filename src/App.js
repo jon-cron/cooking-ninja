@@ -10,10 +10,12 @@ import Home from "./pages/home/Home.js";
 import Create from "./pages/create/Create.js";
 import Search from "./pages/search/Search.js";
 import Recipe from "./pages/recipe/Recipe.js";
+import Navbar from "./components/navbar/Navbar.js";
 function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<Create />} />
