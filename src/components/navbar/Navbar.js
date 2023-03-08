@@ -7,10 +7,14 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <nav>
-        <Link className="brand" to="/">
-          <h1>Home</h1>
-        </Link>
-        <SearchBar />
+        <div className="display">
+          <Link className="brand" to="/">
+            <h1>Home</h1>
+          </Link>
+          <div className="search">
+            <SearchBar />
+          </div>
+        </div>
         <Link className="brand" to="/create">
           Create
         </Link>

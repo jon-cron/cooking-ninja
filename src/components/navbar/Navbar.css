@@ -3,6 +3,13 @@
   padding: 20px;
   color: #fff;
 }
+.navbar .search {
+  margin-left: 20px;
+}
+.navbar .display {
+  display: flex;
+  justify-content: space-evenly;
+}
 .navbar nav {
   display: flex;
   /* align-items: center; */
