@@ -8,7 +8,7 @@ export default function SearchBar() {
   const navigate = useNavigate();
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/search/?q=${search}`);
+    navigate(`/search/${search}`);
     setSearch("");
   };
   return (
