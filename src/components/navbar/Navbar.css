@@ -5,12 +5,13 @@
 }
 .navbar nav {
   display: flex;
-  align-items: center;
-  max-width: 1200px;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* max-width: 1200px; */
   margin: 0;
 }
 .navbar a.brand {
-  margin-right: auto;
+  /* margin-right: auto; */
   color: #fff;
   text-decoration: none;
 }
