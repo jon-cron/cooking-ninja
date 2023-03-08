@@ -5,7 +5,7 @@ import SearchBar from "../searchBar/SearchBar.js";
 import { ThemeContext } from "../../context/ThemeContext.js";
 
 export default function Navbar() {
-  // NOTE getting color from the global context of ThemeContext.
+  // NOTE getting color from the global context of ThemeContext
   const { color } = useContext(ThemeContext);
   return (
     <div className="navbar" style={{ background: color }}>
