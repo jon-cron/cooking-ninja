@@ -1,6 +1,6 @@
 import "./Create.css";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 export default function Create() {
   const [title, setTitle] = useState("");
@@ -8,7 +8,8 @@ export default function Create() {
   const [cookingTime, setCookingTime] = useState("");
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
-
+  // NOTE using useRef to grab the input field
+  const ingredientInput = useRef(null);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(title, method, cookingTime, ingredients);
@@ -20,7 +21,11 @@ export default function Create() {
     const ing = ingredient.trim();
     // NOTE checking for an ingredients and then checking if we already have that ingredient
     if (ing && !ingredients.includes(ing)) {
+      setIngredients((prevIngredients) => [...prevIngredients, ing]);
     }
+    setIngredient("");
+    // NOTE using this ref we can refocus on the input field to allow the  user to immediately start typing a new ingredient without having to click of the input
+    ingredientInput.current.focus();
   };
   const resetInputs = () => {
     setTitle("");
@@ -49,6 +54,7 @@ export default function Create() {
               type="text"
               onChange={(e) => setIngredient(e.target.value)}
               value={ingredient}
+              ref={ingredientInput}
             />
             <button className="btn" type="btn" onClick={addIngredient}>
               add
