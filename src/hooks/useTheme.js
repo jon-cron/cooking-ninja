@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext.js";
 // NOTE to use hooks allows label the file useSOMETHING...
 export const useTheme = () => {
-  return <div>useTheme</div>;
+  const context = useContext(ThemeContext);
 };
