@@ -13,7 +13,7 @@ export default function Recipe() {
     <div>
       {error && <div>{error}</div>}
       {isPending && <div>Loading...</div>}
-      {recipe ? <h1>{recipe.title}</h1> : null}
+      {recipe && <h1>{recipe[0].title}</h1>}
     </div>
   );
 }
