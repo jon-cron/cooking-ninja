@@ -7,6 +7,7 @@ import RecipeList from "../../components/recipeList/RecipeList.js";
 
 export default function Search() {
   const { search } = useParams();
+  // NOTE I was able to accomplish the same result with less lines of code using useParams. Is it best practice? not sure
   // const queryParams = new URLSearchParams(queryString);
   // const query = queryParams.get("q");
   const url = "http://localhost:3000/recipes?q=" + search;
