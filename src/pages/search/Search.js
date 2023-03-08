@@ -20,6 +20,7 @@ export default function Search() {
       {error && <p>{error}</p>}
       {isPending && <p>Loading...</p>}
       {data && <RecipeList recipes={data} />}
+      {/* {data == null && <h2>There are no recipes that have {query}</h2>} */}
     </div>
   );
 }
