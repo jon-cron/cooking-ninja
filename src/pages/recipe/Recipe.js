@@ -10,10 +10,21 @@ export default function Recipe() {
   const { data: recipe, isPending, error } = useFetch(url);
   console.log(recipe);
   return (
-    <div>
+    <div className="recipe">
       {error && <div>{error}</div>}
       {isPending && <div>Loading...</div>}
-      {recipe && <h1>{recipe[0].title}</h1>}
+      {recipe && (
+        <>
+          <h2 className="page-title">{recipe[0].title}</h2>
+          <p>Takes {recipe[0].cookingTime} to cook.</p>
+          <ul>
+            {recipe[0].ingredients.map((i) => (
+              <li key={i}>{i}</li>
+            ))}
+          </ul>
+          <p className="method">{recipe[0].method}</p>
+        </>
+      )}
     </div>
   );
 }
