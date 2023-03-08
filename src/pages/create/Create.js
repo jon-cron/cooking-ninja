@@ -1,8 +1,10 @@
 import "./Create.css";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFetch } from "../../hooks/useFetch.js";
+import { useNavigate } from "react-router-dom";
 export default function Create() {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [method, setMethod] = useState("");
   const [cookingTime, setCookingTime] = useState("");
@@ -26,6 +28,11 @@ export default function Create() {
       ingredients,
     });
     resetInputs();
+    setTimeout(() => {
+      if (data != null) {
+        navigate("/");
+      }
+    }, 500);
   };
   const addIngredient = (e) => {
     e.preventDefault();
@@ -45,6 +52,7 @@ export default function Create() {
     setMethod("");
     setIngredients([]);
   };
+
   return (
     <div className="create">
       <h2 className="page-title">Add a New Recipe</h2>

@@ -56,6 +56,35 @@
         "meat"
       ],
       "id": "2BK6fIJ"
+    },
+    {
+      "title": "cooked carrots",
+      "method": "boil",
+      "cookingTime": "10minutes",
+      "ingredients": [
+        "carrot"
+      ],
+      "id": "U7p-tNh"
+    },
+    {
+      "title": "boiled meat",
+      "method": "boil",
+      "cookingTime": "25minutes",
+      "ingredients": [
+        "meat",
+        "water"
+      ],
+      "id": "txHiQ_f"
+    },
+    {
+      "title": "boiled leeks",
+      "method": "boil",
+      "cookingTime": "52minutes",
+      "ingredients": [
+        "leeks",
+        "water"
+      ],
+      "id": "fNyAkxm"
     }
   ]
 }
