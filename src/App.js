@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+        {/* NOTE if you place a component outside of the routes then it will persist between pages. Very useful for a navbar or footer */}
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
