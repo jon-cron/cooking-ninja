@@ -6,16 +6,27 @@ export default function Create() {
   const [title, setTitle] = useState("");
   const [method, setMethod] = useState("");
   const [cookingTime, setCookingTime] = useState("");
+  const [ingredient, setIngredient] = useState("");
+  const [ingredients, setIngredients] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title, method, cookingTime);
+    console.log(title, method, cookingTime, ingredients);
     resetInputs();
+  };
+  const addIngredient = (e) => {
+    e.preventDefault();
+    // NOTE trim removes unwanted white space
+    const ing = ingredient.trim();
+    // NOTE checking for an ingredients and then checking if we already have that ingredient
+    if (ing && !ingredients.includes(ing)) {
+    }
   };
   const resetInputs = () => {
     setTitle("");
     setCookingTime("");
     setMethod("");
+    setIngredients([]);
   };
   return (
     <div className="create">
@@ -30,6 +41,19 @@ export default function Create() {
             onChange={(e) => setTitle(e.target.value)}
             value={title}
           />
+        </label>
+        <label>
+          <span>Recipe Ingredients:</span>
+          <div>
+            <input
+              type="text"
+              onChange={(e) => setIngredient(e.target.value)}
+              value={ingredient}
+            />
+            <button className="btn" type="btn" onClick={addIngredient}>
+              add
+            </button>
+          </div>
         </label>
         <label>
           <span>Recipe Method:</span>
