@@ -11,7 +11,6 @@ import Create from "./pages/create/Create.js";
 import Search from "./pages/search/Search.js";
 import Recipe from "./pages/recipe/Recipe.js";
 import Navbar from "./components/navbar/Navbar.js";
-import ThemeSelector from "./components/themeSelector/ThemeSelector.js";
 function App() {
   return (
     <div className="App">
