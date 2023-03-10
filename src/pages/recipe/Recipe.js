@@ -2,7 +2,9 @@ import "./Recipe.css";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch.js";
+import { useTheme } from "../../hooks/useTheme.js";
 export default function Recipe() {
+  const { mode } = useTheme();
   // NOTE this works just fine but to limit dot notation when can drill into the param by simply using { id } as seen below
   // const param = useParams();
   const { id } = useParams();
@@ -10,7 +12,7 @@ export default function Recipe() {
   const { data: recipe, isPending, error } = useFetch(url);
   console.log(recipe);
   return (
-    <div className="recipe">
+    <div className={`recipe ${mode}`}>
       {error && <div>{error}</div>}
       {isPending && <div>Loading...</div>}
       {recipe && (
