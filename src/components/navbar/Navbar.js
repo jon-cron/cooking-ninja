@@ -8,10 +8,18 @@ import { useTheme } from "../../hooks/useTheme.js";
 export default function Navbar() {
   // NOTE getting color from the global context of ThemeContext
   // const { color } = useContext(ThemeContext);
-  const { color } = useTheme();
+  const { color, changeColor } = useTheme();
   return (
     <div className="navbar" style={{ background: color }}>
-      <nav>
+      <nav
+        onClick={() =>
+          changeColor(
+            `rgb(${Math.floor(Math.random() * 255)},${Math.floor(
+              Math.random() * 255
+            )},${Math.floor(Math.random() * 255)})`
+          )
+        }
+      >
         <div className="display">
           <Link className="brand" to="/">
             <h1>Home</h1>

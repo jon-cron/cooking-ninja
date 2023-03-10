@@ -18,7 +18,7 @@ export function ThemeProvider({ children }) {
     dispatch({ type: "CHANGE_COLOR", payload: color });
   };
   return (
-    <ThemeContext.Provider value={{ color: "blue" }}>
+    <ThemeContext.Provider value={{ ...state, changeColor }}>
       {children}
     </ThemeContext.Provider>
   );
