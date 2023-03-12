@@ -14,6 +14,7 @@ import Navbar from "./components/navbar/Navbar.js";
 import { useTheme } from "./hooks/useTheme.js";
 function App() {
   const { mode } = useTheme();
+  // NOTE about to use firestore database
   return (
     <div className={`App ${mode}`}>
       <Router>
