@@ -17,12 +17,11 @@ export default function Recipe() {
   const [error, setError] = useState(false);
   useEffect(() => {
     setIsPending(true);
-    projectFirestore
+    const unsub = projectFirestore
       .collection("recipes")
       // NOTE .doc() is how we search through our db and with params
       .doc(id)
-      .get()
-      .then((doc) => {
+      .onSnapshot((doc) => {
         if (doc.exists) {
           setIsPending(false);
           setRecipe(doc.data());
@@ -31,8 +30,15 @@ export default function Recipe() {
           setError("No recipe by that id");
         }
       });
-  }, []);
-
+    // NOTE if the page unmounts this clean up function will run which will stop listening for changes from our database
+    return () => unsub();
+  }, [id]);
+  const handleUpdate = () => {
+    // console.log(id);
+    projectFirestore.collection("recipes").doc(id).update({
+      title: "title",
+    });
+  };
   return (
     <div className={`recipe ${mode}`}>
       {error && <div>{error}</div>}
@@ -47,6 +53,9 @@ export default function Recipe() {
             ))}
           </ul>
           <p className="method">{recipe.method}</p>
+          <button className="btn" onClick={handleUpdate}>
+            Update
+          </button>
         </>
       )}
     </div>

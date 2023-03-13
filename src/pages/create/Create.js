@@ -1,8 +1,10 @@
 import "./Create.css";
 
 import React, { useRef, useState } from "react";
-import { useFetch } from "../../hooks/useFetch.js";
+// import { useFetch } from "../../hooks/useFetch.js";
 import { useNavigate } from "react-router-dom";
+import { projectFirestore } from "../../firebase/config.js";
+
 export default function Create() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -11,25 +13,29 @@ export default function Create() {
   const [ingredient, setIngredient] = useState("");
   const [ingredients, setIngredients] = useState([]);
 
-  const { postData, data } = useFetch("http://localhost:3000/recipes", "POST");
+  // const { postData, data } = useFetch("http://localhost:3000/recipes", "POST");
 
   // NOTE using useRef to grab the input field
   const ingredientInput = useRef(null);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(title, method, cookingTime, ingredients);
-    postData({
+    const doc = {
       title,
       method,
       cookingTime: cookingTime + "minutes",
       ingredients,
-    });
-    resetInputs();
-    setTimeout(() => {
-      if (data != null) {
-        navigate("/");
-      }
-    }, 500);
+    };
+    try {
+      await projectFirestore.collection("recipes").add(doc);
+      resetInputs();
+      navigate("/");
+      // NOTE when using the json serve I would set a timeout to delay navigation. With firestore, I can await my post before navigating
+      // setTimeout(() => {
+      // }, 500);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
   const addIngredient = (e) => {
     e.preventDefault();
