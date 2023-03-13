@@ -31,7 +31,7 @@ export default function Recipe() {
           setError("No recipe by that id");
         }
       });
-  }, []);
+  }, [id]);
 
   return (
     <div className={`recipe ${mode}`}>
