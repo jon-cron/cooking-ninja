@@ -23,7 +23,13 @@ export default function Recipe() {
       .doc(id)
       .get()
       .then((doc) => {
-        console.log(doc);
+        if (doc.exists) {
+          setIsPending(false);
+          setRecipe(doc.data());
+        } else {
+          setIsPending(false);
+          setError("No recipe by that id");
+        }
       });
   }, []);
 
@@ -33,14 +39,14 @@ export default function Recipe() {
       {isPending && <div>Loading...</div>}
       {recipe && (
         <>
-          <h2 className="page-title">{recipe[0].title}</h2>
-          <p>Takes {recipe[0].cookingTime} to cook.</p>
+          <h2 className="page-title">{recipe.title}</h2>
+          <p>Takes {recipe.cookingTime} to cook.</p>
           <ul>
-            {recipe[0].ingredients.map((i) => (
+            {recipe.ingredients.map((i) => (
               <li key={i}>{i}</li>
             ))}
           </ul>
-          <p className="method">{recipe[0].method}</p>
+          <p className="method">{recipe.method}</p>
         </>
       )}
     </div>
