@@ -12,10 +12,9 @@ export default function Home() {
   useEffect(() => {
     setIsPending(true);
     // NOTE snapshot is a reference to all of the data gotten from the .get()
-    projectFirestore
-      .collection("recipes")
-      .get()
-      .then((snapshot) => {
+    // NOTE this was previously a get statement but by using onSnapshot makes this data reactive and will change the data on the page if there are any changes to the data
+    const unsub = projectFirestore.collection("recipes").onSnapshot(
+      (snapshot) => {
         if (snapshot.empty) {
           setError("No recipes");
           setIsPending(false);
@@ -27,11 +26,13 @@ export default function Home() {
           setData(results);
           setIsPending(false);
         }
-      })
-      .catch((err) => {
+      },
+      (err) => {
         setError(err.message);
         setIsPending(false);
-      });
+      }
+    );
+    return () => unsub();
   }, []);
   return (
     <div className="home">
