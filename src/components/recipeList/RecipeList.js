@@ -3,6 +3,7 @@ import "./RecipeList.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../../hooks/useTheme.js";
+import delete-icon from "../../assets/delete-icon.svg";
 
 export default function RecipeList({ recipes }) {
   const { mode } = useTheme();
